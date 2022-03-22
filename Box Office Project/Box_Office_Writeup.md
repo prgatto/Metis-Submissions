@@ -1,0 +1,19 @@
+Peter Gatto
+
+Abstract
+There are many factors that contibute to the box office success or failure of a film. I have built a linear regression model to predict the box office success of a Disney Studios film. My research has found that the best predicting factors are not intrinsic, such as running time of MPAA rating. Extrinsic factors explain much of the variation in box offic performance of films. Specifically, the film's widest release (in terms of number of theaters) and percent of revenue coming from domestic compared to international showing account for 80% of the variance in box office success. After the production of a blockbuster film, the movie studio enters licensing agreements with distributing agents who serve as middlemen who pitch the movie to theater representatives in hopes to lease the film to theaters. The results of my linear regression modeling exercise could be presented in conjunction with film sreenings to encourage theater representatives to show the film and particularly to ensure that the movie is released internationally.
+
+Design
+The target variable of my linear regression model was worldwide gross box office sales. Each movie also had a number of feature variables made public on boxofficemojo.com. For each film, I extracted the title, percent of sales domestic, distributor, release date, MPAA rating, runtime, genres, time in release, and widest release. My aim was to develop multiple linear regression models to determine which combination of factors would produce the most accurate prediction on test data sets.
+
+Data
+Movie box office data were scaped from boxofficemojo.com, who present data concerning the top 200 movies per year. In order to allow for the exclusion of movies that had null values, I requested data on the top 200 movies for 10 years, between 2012 - 2021. I requested HTML from each of the individual movie pages, and processed the data into a useful pandas dataframe. After eliminating nulls, I was left with 1556 movies produced within the last ten years. I split the data into 60% train, 20% validate, 20% test.
+
+Algorithms
+The initial target feature was the worldwide gross box office sales. The target feature was severely skewed, as most of the films in my data set had relatively low gross and very few films having high ticket sales. As a result, I performed a logarithmic transformation on the target feature, leaving the distribution close to normal. I chose to score my model on test data using the mean squared logarithmic error metric, which measures the error of each prediction as a percentage of the difference between true and predicted values. One reason I chose this metric is because it does not disproportionately weigh the error of between large predicted and large true values.
+
+Tools
+My data processing started with scraping data from boxofficemojo.com using the python requests package. Using the BeautifulSoup package, I extracted data from each webpage's HTML code and used a pandas dataframe to facilitate downstream analysis. Visualization using pair plots and correlation matricies narrowed the selection of features for my linear regression model, and my primary test statistic, R^2 facilitated the decision of which factors to model.
+
+Communication
+When delivering data analytical insights to a lay audience, it is important to communicate results that are not only easily understandable, but also motivating. In other words, my goal for this project was to provide information that a theater distribution agent would be eager to know more about because it helps inform better decision making. Walt Disney Studio films significantly outperform other studios, which should encourage theater representatives to lease and screen a Disney film. As a film production studio, the success of our film relies on reaching as many viewers as possible, and a moderate degree of international exposure predicts box-office success.
