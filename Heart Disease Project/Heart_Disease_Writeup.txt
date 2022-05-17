@@ -1,0 +1,20 @@
+Peter Gatto
+ML Classification Project Writeup
+
+Abstract:
+Heart disease is the highest cause of death in the United States. This project considers whether heart health can be predicted by survey results, and which risk factors have the highest predictive value. To answer this question, I built three machine learning classification models: a k-nearest-neighbors algorithm, a logistic regression model, and a random forest approach. Because people with heart disease or heart attack history constitute less than 10% of survey respondents, correcting for class imbalance was central to the success of my classifiers. I found that the logistic regression model did the best at identifying true positives (correctly identifying people with heart disease) with a recall score of 0.725. The random forest method also performed reasonably well, but the k-nearest-neighbor algorithm performed poorly. The most important risk factors were high blood pressure, age, BMI, high cholesterol and diabetes.
+
+Design:
+I chose to focus on hard classification: rather than assigning probabilities of heart disease to each respondent, I classified each as either heart healthy or heart diseased. This allowed different models to be compared on recall score. More impotantly, I would expect that a hospital or doctors' office might benefit from hard classification: for a patient to be told that they have, for example, a 70% risk of heart disease is harder to interpret than a binary classifier.
+
+Data:
+The data set used in this project was compiled from surveys collected by the Centers for Disease Control and Prevention (CDC). The data set includes infromation from 253,680 resondents to phone surveys conducted by the Behavioral Risk Factor Surveillance System. For each of the 253,680 rows, there is a column for our target feature: whether a respondent reports having had coronary heart disease or myocardial infarction. There are also independent variables including high blood pressure, high cholesterol, body mass index, smoking history, stroke history, diabetes, physical activity, diet, alcohol consumption, health insurance status, as well as age and sex.
+
+Algorithms:
+The k-nearest-neighbors algorithm classifies a data point by computing the distance values to other neighbors, then finding the k nearest ones. In the case of my project, the KNN algorithm performed best with k = 1, most likely because of the class imbalance. The logistic regression model predicts probabilities for yes/no questions. Choosing a decision threshold, in this case the default 0.5, allows soft probability estimations into hard classifications. The random forest method uses ensembles of decision trees, aggregating across all trees to deliver a classification estimate.
+
+Tools:
+Analysis was performed in Python using scikitlearn packages for train/validate/test splitting, model selection, fitting, and scoring. All three of the models developed are sklearn methods: LogisticRegression, KNeighborsClassifier, and RandomTreeClassifier.
+
+Communication:
+A model that can predict heart disease from surveys of risk factors could benefit cardiologists as a screen to identify patients who might need additional consideration or investigation. A tool that suggests heart disease risk must not only be interpretable by a doctor, it should also be informative for a patient. In addition to having the highest recall performance, a logistic regression model has a higher degree of interpretability than the k-nearest-neighbors or random forest methods, much less most ensemble methods.
