@@ -1,0 +1,21 @@
+Peter Gatto
+NLP Project Writeup
+
+Abstract:
+While anti-vaccine sentiment had become vocal before the onset of the COVID-19 pandemic, the polarization of opinions about vaccination has become more evident than ever. My project investigates tweets related to the Pfizer Biontech coronavirus vaccine. The ease of access of communication provided by twitter makes the dataset of vaccine-related tweets a potentially useful corpus for vaccine sentiment analysis. I have found that there is a diversity of user descriptions within the corpus. Because all of the tweets were related to the coronavirus vaccine, there is not much diversity in the topics of the tweet texts. Finally, I found that the sentiment of these tweets tends to be positive.
+
+Design:
+My first goal for this project was to investigate the diversity of user descriptions. To this extent, I have produced a word cloud based on common terms within the user description corpus. My second aim was to analyze the text of the tweets in this dataset. This has involved topic modeling and sentiment analysis.
+
+Data:
+I have used a dataset found on kaggle:
+https://www.kaggle.com/datasets/gpreda/pfizer-vaccine-tweets?select=vaccination_tweets.csv
+Data includes over 10,000 tweets as well as accompanying user description, followers and retweets for each tweet. The tweets were collected using the #PfizerBioNTech hashtag. Each tweet has accompanying data which include text, user description, followers, friends and favorites, as well as likes and retweets for each tweet.
+
+Algorithms: The term frequency-inverse document frequency (TFIDF) vectorizer normalizes counts of words in a corpus by the total number of terms, and weights rare words more highly. The result is a document-term matrix that not only records counts of each term, but normalizes the counts so that distinct terms are more highly weighted. Non-negative matrix factorization (NMF) decomposes the document term matrix into two matrices that determine the words within each topic and the topics within each document. Valence aware dictionary and sentiment reasoner (VADER) has a dictionary of words prelabeled with sentiment scores. This algorithm is well suited for social media text.
+
+Tools:
+The twitter Coronavirus vaccine data are well suited for NLP analysis. I have used the Tfidf Vectorizer to create document-term matrices. I attempted to process these document-term matricies to cluster users with k-means or DBSCAN but was not satisfied with the performance of either method. I used NMF topic modeling of these document-term matricies. I used VADER for sentiment analysis of the tweets' text.
+
+Communication:
+Social media have the capacity to influence the beliefs and behaviors of users. The analysis of these tweets could inform a public service intervention aimed at promoting positive opionins of vaccines and to drive increased vaccination rates. Twitter users represent the diversity of views and opinions of the human population. Understanding the interaction between user segmentation and vaccine sentiment could prove useful in implementing targeted vaccine promotion. 
